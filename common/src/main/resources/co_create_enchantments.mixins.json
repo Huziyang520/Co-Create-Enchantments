@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "com.cocreateenchantments.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "CceDeathSaveMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

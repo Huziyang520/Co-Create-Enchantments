@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "co_create_enchantments:undying_drop",
+    { "id": "practical_enchantments:mutual_destruction", "required": false },
+    { "id": "practical_enchantments:demonic_pact", "required": false }
+  ]
+}

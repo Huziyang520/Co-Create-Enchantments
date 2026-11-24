@@ -1,0 +1,43 @@
+pluginManagement {
+	repositories {
+		gradlePluginPortal()
+		mavenCentral()
+		exclusiveContent {
+			forRepository {
+				maven {
+					name = 'Fabric'
+					url = uri('https://maven.fabricmc.net')
+				}
+			}
+			filter {
+				includeGroupAndSubgroups('net.fabricmc')
+			}
+		}
+		exclusiveContent {
+			forRepository {
+				maven {
+					name = 'NeoForge'
+					url = uri('https://maven.neoforged.net/releases')
+				}
+			}
+			filter {
+				includeGroupAndSubgroups('net.neoforged')
+			}
+		}
+	}
+}
+plugins {
+	id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+rootProject.name = 'co-create-enchantments'
+includeBuild('build-logic')
+includeBuild('../../MerlinLib/master') {
+	dependencySubstitution {
+		substitute module('com.huziyang520.merlinlib:merlinlib-common-26.3') using project(':common')
+		substitute module('com.huziyang520.merlinlib:merlinlib-fabric-26.3') using project(':fabric')
+		substitute module('com.huziyang520.merlinlib:merlinlib-neoforge-26.3') using project(':neoforge')
+	}
+}
+include('common')
+include('fabric')
+include('neoforge')

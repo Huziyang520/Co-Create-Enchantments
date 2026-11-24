@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "${description}",
+  "authors": [
+    "${mod_author}"
+  ],
+  "license": "${license}",
+  "icon": "icon.png",
+  "contact": {
+    "homepage": "https://github.com/Huziyang520/Co-Create-Enchantments",
+    "issues": "https://github.com/Huziyang520/Co-Create-Enchantments/issues"
+  },
+  "environment": "*",
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": "*",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=${java_version}",
+    "merlinlib": "*",
+    "forgeconfigapiport": "*"
+  },
+  "recommends": {
+    "modmenu": "*"
+  },
+  "entrypoints": {
+    "main": [
+      "com.cocreateenchantments.fabric.CceFabric"
+    ],
+    "client": [
+      "com.cocreateenchantments.fabric.client.CceFabricClient"
+    ],
+    "modmenu": [
+      "com.cocreateenchantments.fabric.client.CceModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "co_create_enchantments.mixins.json"
+  ]
+}
