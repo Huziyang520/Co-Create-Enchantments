@@ -3,8 +3,10 @@
 package com.cocreateenchantments.support;
 
 import com.cocreateenchantments.CoCreateEnchantments;
+import com.huziyang520.merlinlib.api.MerlinApi;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -25,12 +27,12 @@ public final class CceSupport {
 	}
 
 	public static EquipmentSlot findSlotWith(LivingEntity entity, String path) {
-		for (EquipmentSlot slot : SLOTS) {
-			if (getLevel(entity.getItemBySlot(slot), path) > 0) {
-				return slot;
-			}
+		if (!(entity instanceof ServerPlayer player)) {
+			return null;
 		}
-		return null;
+		return MerlinApi.playerDeath().findSlotWith(player,
+				Identifier.fromNamespaceAndPath(CoCreateEnchantments.MOD_ID, path),
+				EquipmentSlot.CHEST, EquipmentSlot.OFFHAND);
 	}
 
 	public static int getLevel(ItemStack stack, String path) {

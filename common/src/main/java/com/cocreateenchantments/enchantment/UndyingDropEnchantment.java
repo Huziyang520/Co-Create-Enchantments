@@ -6,7 +6,8 @@ import com.cocreateenchantments.CoCreateEnchantments;
 import com.cocreateenchantments.config.CceTunables;
 import com.cocreateenchantments.content.CceContent;
 import com.cocreateenchantments.support.CceSupport;
-import com.cocreateenchantments.support.DeathSaveSupport;
+import com.huziyang520.merlinlib.api.MerlinApi;
+import com.huziyang520.merlinlib.api.PlayerDeathApi;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.server.level.ServerPlayer;
@@ -41,8 +42,12 @@ public final class UndyingDropEnchantment {
 		if (destroyedSlot == null) {
 			return false;
 		}
-		DeathSaveSupport.dropEverything(player, destroyedSlot);
-		DeathSaveSupport.performResurrection(player, CceTunables.undyingDropDarknessTicks(level));
+		MerlinApi.playerDeath().dropInventory(player, destroyedSlot);
+		MerlinApi.playerDeath().resurrect(player, new PlayerDeathApi.ResurrectionOptions(
+				CceTunables.undyingDropDarknessTicks(level),
+				CceTunables.secondsToTicks(45), 1,
+				CceTunables.secondsToTicks(5), 1,
+				CceTunables.secondsToTicks(40)));
 		return true;
 	}
 }
