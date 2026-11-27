@@ -11,9 +11,7 @@ public final class CceConfigSchema {
 			CceConfigOption.integer("armor", "gentle_descent.refresh_seconds", 1, 1, 10),
 			CceConfigOption.bool("armor", "gentle_descent.cancel_on_sneak", true),
 			CceConfigOption.integer("armor", "undying_drop.darkness_base_seconds", 20, 0, 120),
-			CceConfigOption.integer("armor", "undying_drop.darkness_step", 4, 0, 20),
-			CceConfigOption.integer("armor", "chinese.airborne_durability_base", 2, 0, 20),
-			CceConfigOption.integer("armor", "chinese.damage_step", 4, 1, 20)
+			CceConfigOption.integer("armor", "undying_drop.darkness_step", 4, 0, 20)
 	);
 
 	private CceConfigSchema() {

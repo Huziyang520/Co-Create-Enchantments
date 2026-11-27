@@ -26,6 +26,15 @@ public final class CceSupport {
 		return best;
 	}
 
+	/** 按路径查等级，不受 Holder 实例是否同一份影响。 */
+	public static int wornLevel(LivingEntity entity, String path) {
+		int best = 0;
+		for (EquipmentSlot slot : SLOTS) {
+			best = Math.max(best, getLevel(entity.getItemBySlot(slot), path));
+		}
+		return best;
+	}
+
 	public static EquipmentSlot findSlotWith(LivingEntity entity, String path) {
 		if (!(entity instanceof ServerPlayer player)) {
 			return null;

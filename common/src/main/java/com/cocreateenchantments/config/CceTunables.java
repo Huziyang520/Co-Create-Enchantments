@@ -10,8 +10,6 @@ public final class CceTunables {
 	private static volatile boolean gentleDescentCancelOnSneak = true;
 	private static volatile int undyingDropDarknessBaseSeconds = 20;
 	private static volatile int undyingDropDarknessStep = 4;
-	private static volatile int chineseAirborneDurabilityBase = 2;
-	private static volatile int chineseDamageStep = 4;
 
 	private CceTunables() {
 	}
@@ -22,8 +20,6 @@ public final class CceTunables {
 		gentleDescentCancelOnSneak = bool(reader, "armor.gentle_descent.cancel_on_sneak", true);
 		undyingDropDarknessBaseSeconds = integer(reader, "armor.undying_drop.darkness_base_seconds", 20);
 		undyingDropDarknessStep = integer(reader, "armor.undying_drop.darkness_step", 4);
-		chineseAirborneDurabilityBase = integer(reader, "armor.chinese.airborne_durability_base", 2);
-		chineseDamageStep = integer(reader, "armor.chinese.damage_step", 4);
 	}
 
 	public static int secondsToTicks(int seconds) {
@@ -44,11 +40,6 @@ public final class CceTunables {
 
 	public static int undyingDropDarknessTicks(int level) {
 		return secondsToTicks(Math.max(0, undyingDropDarknessBaseSeconds - undyingDropDarknessStep * (level - 1)));
-	}
-
-	public static int chineseAirborneDurability(float damage) {
-		int steps = Math.max(1, (int) (damage / Math.max(1, chineseDamageStep)));
-		return chineseAirborneDurabilityBase * steps;
 	}
 
 	private static int integer(Function<String, String> reader, String key, int fallback) {
